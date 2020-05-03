@@ -19,7 +19,7 @@ class Menu extends JsonResource
           'item' => $this->item,
           'description' => $this->description,
           'price' => $this->price,
-          'iamge_name' => $this->image_name,
+          'image_name' => $this->image_name,
         ];
     }
 }
