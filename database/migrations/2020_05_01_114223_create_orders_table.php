@@ -17,10 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('client_name');
             $table->string('client_address');
+            $table->string('client_city');
             $table->string('item');
             $table->bigInteger('item_quantity');
-            $table->bigInteger('item_total_price');
-            $table->bigInteger('item_delivery_price');
+            $table->float('item_total_price');
+            $table->float('item_delivery_price');
             $table->timestamps();
         });
     }
