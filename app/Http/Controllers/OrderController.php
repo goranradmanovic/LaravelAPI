@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Http\Resources\Order as OrderResource;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $allOrders = Order::all();
+
+        return OrderResource::collection($allOrders);
     }
 
     /**
@@ -35,7 +38,15 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $request->validate([
+        'client_name' => 'required|min:5',
+        'client_address' => 'required|min:5',
+        'client_city' => 'required|min:3'
+      ]);
+
+      Order::create($request->all());
+
+      return response('success', 200)->header('Content-Type', 'text/plain');
     }
 
     /**
