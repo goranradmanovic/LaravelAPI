@@ -121,10 +121,10 @@
                         <td>{{ $order->client_address }}</td>
                         <td>{{ $order->client_city }}</td>
                         <td>{{ implode($order->item, ', ') }}</td>
+                        <td>{{ $order->created_at}}</td>
                         <td>{{ $order->item_quantity }}</td>
-                        <td>{{ $order->item_total_price }}</td>
-                        <td>{{ $order->item_delivery_price }}</td>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $order->item_delivery_price }} &euro;</td>
+                        <td>{{ $order->item_total_price }} &euro;</td>
                       </tr>
                     @endforeach
                   </tbody>
