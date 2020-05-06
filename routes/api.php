@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Auth::routes();
+Route::auth();
 
-//Get all menu items
+//API's Routes
 Route::get('menus', 'MenuController@index');
+Route::get('orders', 'OrderController@index');
+Route::post('orders', 'OrderController@store');
