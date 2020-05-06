@@ -61,11 +61,26 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            table {
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            {{-- @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -77,12 +92,43 @@
                         @endif
                     @endauth
                 </div>
-            @endif
+            @endif --}}
 
             <div class="content">
                 <div class="title m-b-md">
-                    Yummi Pizza Shop Laravel API 
+                    Yummi Pizza Shop Laravel API
                 </div>
+                <hr>
+                <table>
+                  <caption><h3>All Orderse</h3></caption>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th>Order</th>
+                      <th>Date</th>
+                      <th>Amounts</th>
+                      <th>Delivery Price</th>
+                      <th>Order Price</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    @foreach($allorders as $order)
+                      <tr>
+                        <td>{{ $order->client_name }}</td>
+                        <td>{{ $order->client_address }}</td>
+                        <td>{{ $order->client_city }}</td>
+                        <td>{{ implode($order->item, ', ') }}</td>
+                        <td>{{ $order->item_quantity }}</td>
+                        <td>{{ $order->item_total_price }}</td>
+                        <td>{{ $order->item_delivery_price }}</td>
+                        <td>{{ $order->created_at }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
             </div>
         </div>
     </body>
